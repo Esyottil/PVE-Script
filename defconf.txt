@@ -1,0 +1,213 @@
+﻿
+#>---------------------- Параметры конфигурации -----------------------<#
+
+_config_stand_1_var='Базовый стенд демэкзамена КОД 09.02.06-2025. Модуль № 1'
+config_stand_1_var[_stand_config]='
+	pool_name           = DE_09.02.06-2025_stand_A-{0}
+	stands_display_desc = Стенды демэкзамена 09.02.06 Сетевое и системное администрирование. Модуль 1
+	pool_desc           = Стенд участника демэкзамена "Сетевое и системное администрирование". Стенд A-{0}
+	access_user_name    = Student-A{0}
+	access_user_desc    = Учетная запись участника демэкзамена A-{0}
+'
+
+config_stand_1_var[_ISP]='Альт JeOS'
+config_stand_1_var[ISP]='
+	access_roles    = Competitor
+	config_template = Alt-JeOS
+	startup         = order=1,up=8,down=30
+	network_0       = { bridge=inet }
+	network_1       = 🖧: ISP-HQ
+	network_2       = 🖧: ISP-BR
+'
+
+config_stand_1_var[_HQ-RTR]='EcoRouterOS'
+config_stand_1_var[HQ-RTR]='
+	access_roles    = Competitor
+	config_template = EcoRouterOS
+	startup         = order=2,up=8,down=0
+	network_1       = 🖧: ISP-HQ
+	network_2       = 🖧: HQ-Net
+'
+
+config_stand_1_var[_HQ-SRV]='Альт Сервер 10.1'
+config_stand_1_var[HQ-SRV]='
+	access_roles    = Competitor
+	config_template = Alt-Server_10.1
+	startup         = order=3,up=8,down=30
+	network_0       = {bridge="🖧: HQ-Net", tag=100}
+'
+
+config_stand_1_var[_HQ-CLI]='Альт Рабочая Станция 10.1'
+config_stand_1_var[HQ-CLI]='
+	access_roles    = Competitor
+	config_template = Alt-Workstation_10.1
+	startup         = order=4,up=8,down=30
+	network_0       = {bridge="🖧: HQ-Net", tag=200}
+'
+
+config_stand_1_var[_BR-RTR]='EcoRouterOS'
+config_stand_1_var[BR-RTR]='
+	access_roles    = Competitor
+	config_template = EcoRouterOS
+	startup         = order=2,up=8,down=0
+	network_1       = 🖧: ISP-BR
+	network_2       = 🖧: BR-Net
+'
+
+config_stand_1_var[_BR-SRV]='Альт Сервер 10.1'
+config_stand_1_var[BR-SRV]='
+	access_roles    = Competitor
+	config_template = Alt-Server_10.1
+	startup         = order=3,up=8,down=30
+	network_0       = 🖧: BR-Net
+'
+
+
+
+_config_stand_2_var='Базовый стенд демэкзамена КОД 09.02.06-2025. Модуль № 2'
+config_stand_2_var[_stand_config]='
+	pool_name           = DE_09.02.06-2025_stand_B-{0}
+	stands_display_desc = Стенды демэкзамена 09.02.06 Сетевое и системное администрирование. Модуль 2
+	pool_desc           = Стенд участника демэкзамена "Сетевое и системное администрирование". Стенд B-{0}
+	access_user_name    = Student-B{0}
+	access_user_desc    = Учетная запись участника демэкзамена B-{0}
+'
+
+config_stand_2_var[_ISP]='Альт JeOS'
+config_stand_2_var[ISP]='
+	access_roles    = Competitor
+	config_template = Alt-JeOS
+	startup         = order=1,up=8,down=30
+	network_1       = { bridge=inet }
+	network_2       = 🖧: ISP-HQ
+	network_3       = 🖧: ISP-BR
+	boot_disk_0     = /var/lib/vz/template/iso/ISP_DE39-2025_M2.qcow2/
+'
+
+config_stand_2_var[_HQ-RTR]='EcoRouterOS'
+config_stand_2_var[HQ-RTR]='
+	access_roles    = Competitor
+	config_template = EcoRouterOS
+	startup         = order=2,up=8,down=0
+	network_1       = 🖧: ISP-HQ
+	network_2       = 🖧: HQ-Net
+	boot_disk_0     = /var/lib/vz/template/iso/HQ-RTR_DE39-2025_M2.qcow2/
+'
+
+config_stand_2_var[_HQ-SRV]='Альт Сервер 10.1'
+config_stand_2_var[HQ-SRV]='
+	access_roles    = Competitor
+	config_template = Alt-Server_10.1
+	startup         = order=3,up=8,down=30
+	network_1       = {bridge="🖧: HQ-Net", tag=100}
+	boot_disk_0     = /var/lib/vz/template/iso/HQ-SRV_DE39-2025_M2.qcow2
+	disk_1          = 1 GB
+	disk_2          = 1 GB
+	disk_3          = 1 GB
+'
+
+config_stand_2_var[_HQ-CLI]='Альт Рабочая Станция 10.1'
+config_stand_2_var[HQ-CLI]='
+	access_roles    = Competitor
+	config_template = Alt-Workstation_10.1
+	startup         = order=4,up=8,down=30
+	network_1       = {bridge="🖧: HQ-Net", tag=200}
+	boot_disk_0     = /var/lib/vz/template/iso/HQ-CLI_DE39-2025_M2.qcow2
+'
+
+config_stand_2_var[_BR-RTR]='EcoRouterOS'
+config_stand_2_var[BR-RTR]='
+	access_roles    = Competitor
+	config_template = EcoRouterOS
+	startup         = order=2,up=8,down=0
+	network_1       = 🖧: ISP-BR
+	network_2       = 🖧: BR-Net
+	boot_disk_0     = /var/lib/vz/template/iso/BR-RTR_DE39-2025_M2.qcow2
+'
+config_stand_2_var[_BR-SRV]='Альт Сервер 10.1'
+config_stand_2_var[BR-SRV]='
+	access_roles    = Competitor
+	config_template = Alt-Server_10.1
+	startup         = order=3,up=8,down=30
+	network_1       = 🖧: BR-Net
+	boot_disk_0     = /var/lib/vz/template/iso/BR-SRV_DE39-2025_M2.qcow2
+'
+
+# Список шаблонов ВМ
+
+config_templates[_Alt-JeOS]='Базовый шаблон для Альт p11 JeOS-systemd'
+config_templates[Alt-JeOS]='
+	tags        = alt_jeos
+	ostype      = l26
+	serial0     = socket
+	tablet      = 0
+	agent       = 1
+	scsihw      = virtio-scsi-single
+	cpu         = host
+	cores       = 1
+	memory      = 1024
+	boot_disk_0 = /var/lib/vz/template/iso/Alt-p11_Jeos-systemd.qcow2
+'
+
+config_templates[_Eltex-vESR]='Базовый шаблон для Eltex vESR'
+config_templates[Eltex-vESR]='
+	tags        = eltex-vesr
+	startup     = order=any,down=0
+	ostype      = l26
+	serial0     = socket
+	tablet      = 0
+	acpi        = 0
+	scsihw      = virtio-scsi-single
+	cpu         = host
+	cores       = 4
+	memory      = 3072
+	netifs_type = e1000
+	boot_disk_0 = /var/lib/vz/template/iso/vESR.qcow2
+'
+
+config_templates[_EcoRouterOS]='Базовый шаблон для EcoRouterOS'
+config_templates[EcoRouterOS]='
+	tags        = ecorouter
+	startup     = order=any,down=0
+	ostype      = l26
+	machine     = pc-i440fx-7.2
+	serial0     = socket
+	tablet      = 0
+	cpu         = host
+	cores       = 2
+	memory      = 4096
+	rng0        = source=/dev/urandom
+	disk_type   = ide
+	netifs_type = vmxnet3
+	network_0   = { bridge=inet, state=down }
+	boot_disk_0 = /var/lib/vz/template/iso/EcoRouter.qcow2
+'
+
+config_templates[_Alt-Workstation_10.1]='Базовый шаблон для Альт Рабочая Станция 10.1'
+config_templates[Alt-Workstation_10.1]='
+	tags        = alt_workstation_10.1
+	ostype      = l26
+	serial0     = socket
+	agent       = 1
+	scsihw      = virtio-scsi-single
+	cpu         = host
+	cores       = 2
+	memory      = 3072
+	boot_disk_0 = /var/lib/vz/template/iso/Alt-Workstation_10.1.qcow2
+'
+
+config_templates[_Alt-Server_10.1]='Базовый шаблон для Альт Сервер 10.1'
+config_templates[Alt-Server_10.1]='
+	tags        = alt_server_10.1
+	ostype      = l26
+	serial0     = socket
+	agent       = 1
+	tablet      = 0
+	scsihw      = virtio-scsi-single
+	cpu         = host
+	cores       = 1
+	memory      = 2048
+	boot_disk_0 = /var/lib/vz/template/iso/Alt-Server_10.1.qcow2
+'
+
+#<------------------- Конец параметров конфигурации ------------------->#
